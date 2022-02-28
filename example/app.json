@@ -1,0 +1,22 @@
+{
+  "name": "f-react-native-schedule-example",
+  "displayName": "FReactNativeSchedule Example",
+  "expo": {
+    "name": "f-react-native-schedule-example",
+    "slug": "f-react-native-schedule-example",
+    "description": "Example app for f-react-native-schedule",
+    "privacy": "public",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
