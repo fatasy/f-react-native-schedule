@@ -34,7 +34,13 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "schedule",
+    "calendar",
+    "tasks",
+    "agenda",
+    "react-native-schedule",
+    "react-schedule"
   ],
   "repository": "https://github.com/fatasy/f-react-native-schedule",
   "author": "Fatasy <marcelo.fatasy@hotmail.com> (https://github.com/fatasy)",
@@ -143,5 +149,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "dayjs": "^1.10.8"
   }
 }
