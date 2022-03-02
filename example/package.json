@@ -12,12 +12,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "3.5.2",
     "dayjs": "^1.10.8",
     "expo": "^42.0.0",
     "expo-splash-screen": "~0.11.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-date-picker": "^4.2.0",
+    "react-native-numeric-input": "^1.9.1",
+    "react-native-radio-buttons-group": "^2.2.10",
     "react-native-safe-area-context": "3.2.0",
     "react-native-safe-area-view": "^1.1.1",
     "react-native-unimodules": "~0.14.5",

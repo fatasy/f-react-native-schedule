@@ -2,7 +2,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { useContext } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, FlatList } from 'react-native';
 import ScheduleContext from '../ScheduleContext';
 
 const Header: React.FC = () => {
@@ -12,24 +12,25 @@ const Header: React.FC = () => {
 
   function renderDayWeek(dayNumber: number) {
     const day = dayjs(selectedDate).day(dayNumber);
-    const isCurrentDay = day.isSame(dayjs(selectedDate));
-    const color = {
-      ...(isCurrentDay && {
-        color: currentDayColor,
-      }),
-    };
+    const isCurrentDay = day.format('DD-MM') === dayjs().format('DD-MM');
 
     return (
       <View key={dayNumber} style={[styles.card, cellDimensions]}>
         {cellRender && cellRender(day)}
         {!cellRender && (
           <View style={styles.content}>
-            <Text style={color}>{day.format('dd')}</Text>
+            <Text
+              style={{
+                color: isCurrentDay ? currentDayColor : '#000',
+              }}
+            >
+              {day.format('dd')}
+            </Text>
             <Text
               style={{
                 fontSize: 16,
                 fontWeight: 'bold',
-                ...color,
+                color: isCurrentDay ? currentDayColor : '#000',
               }}
             >
               {day.format('DD')}
@@ -40,7 +41,17 @@ const Header: React.FC = () => {
     );
   }
 
-  return <View style={styles.container}>{days.map(renderDayWeek)}</View>;
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={days}
+        extraData={selectedDate}
+        horizontal
+        keyExtractor={(day) => day.toString()}
+        renderItem={({ item: day }) => renderDayWeek(day)}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
