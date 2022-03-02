@@ -1,4 +1,4 @@
-# f-react-native-schedule
+# Fantastic React Native Schedule
 
 Flexible scheduling library with more built-in features and enhanced customization options
 
@@ -17,10 +17,16 @@ import Schedule from 'f-react-native-schedule';
 <Schedule />;
 ```
 
-## Preview
+## Day View
 
 <kbd>
-  <img src="https://github.com/fatasy/f-react-native-schedule/blob/48e6daec009571340963b2685ae3d092b4d644ce/assets/schedule.png?raw=true" >
+  <img src="https://github.com/fatasy/f-react-native-schedule/blob/e43556f79712d089bc85cb3215506692a7c7d027/assets/day-view-schedule.png?raw=true" >
+</kbd>
+
+## Week View
+
+<kbd>
+  <img src="https://github.com/fatasy/f-react-native-schedule/blob/e43556f79712d089bc85cb3215506692a7c7d027/assets/week-view-schedule.png?raw=true" >
 </kbd>
 
 ## Properties API
