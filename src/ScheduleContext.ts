@@ -7,13 +7,16 @@ import type {
 } from './Content/Scheduling';
 import type {
   CellDimensions,
+  CellSettings,
   DaysWeek,
   EndHour,
+  HeaderSettings,
   Hours,
   ScheduleView,
   Scheduling,
   SchedulingSettings,
   SelectedDate,
+  SidebarSettings,
   StartHour,
 } from './types';
 
@@ -23,7 +26,6 @@ type ScheduleContext = {
    * O padrão é a data atual do sistema.
    *
    * @default 'new Date()'
-   * @aspDefaultValue DateTime.Now
    */
   selectedDate: SelectedDate;
   /**
@@ -54,6 +56,9 @@ type ScheduleContext = {
   hours: Hours;
   daysWeek: DaysWeek;
   cellDimensions: CellDimensions;
+  headerSettings: HeaderSettings;
+  sidebarSettings: SidebarSettings;
+  cellSettings: CellSettings;
   schedulingSettings: SchedulingSettings;
   onCellPress?: onCellPress;
   onCellLongPress?: onCellLongPress;

@@ -21,7 +21,8 @@ export type CellDimensions = {
 };
 
 export type CellSettings = {
-  style: ViewStyle;
+  style?: ViewStyle;
+  render?: (date: Dayjs) => JSX.Element;
 };
 
 export type SchedulingField = {
@@ -40,6 +41,30 @@ export type SchedulingSettings = {
   fields: SchedulingFields;
   style?: ViewStyle;
   render?: (scheduling: Scheduling, date: Dayjs) => JSX.Element;
+};
+
+export type HeaderSettings = {
+  cellRender?: (date: Dayjs) => JSX.Element;
+  /**
+   * Current day color
+   *
+   * @default '#1a73e8'
+   */
+  currentDayColor?: string;
+};
+
+export type SidebarSettings = {
+  cellRender?: (hour: number) => JSX.Element;
+  /**
+   * @default '#b5b5c3'
+   */
+  hourColor?: string;
+  /**
+   * if you want to display the period, set 'HH:00 A'
+   * @link https://day.js.org/docs/en/display/format
+   * @default 'HH:00'
+   */
+  hourFormat?: string;
 };
 
 export type ScheduleSchedulingSettings = {

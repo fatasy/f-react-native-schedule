@@ -9,7 +9,10 @@ import styles from './styles';
 import {
   DaysWeek,
   defaultCellDimensions,
+  defaultCellSettings,
+  defaultHeaderSettings,
   defaultSchedulingSettings,
+  defaultSidebarSettings,
 } from './constants';
 import {
   getCellDimensions,
@@ -19,11 +22,17 @@ import {
 } from './utils';
 
 import ScheduleContext from './ScheduleContext';
-import type { ScheduleSchedulingSettings } from './types';
+import type {
+  CellDimensions,
+  CellSettings,
+  ScheduleSchedulingSettings,
+} from './types';
 
 export type ScheduleProps = {
   style?: ViewStyle;
-  schedulingSettings?: ScheduleSchedulingSettings;
+  schedulingSettings?: Partial<ScheduleSchedulingSettings>;
+  cellSettings?: Partial<CellSettings>;
+  cellDimensions?: Partial<CellDimensions>;
 } & Partial<
   Pick<
     ScheduleContext,
@@ -33,7 +42,8 @@ export type ScheduleProps = {
     | 'endHour'
     | 'currentView'
     | 'daysWeek'
-    | 'cellDimensions'
+    | 'headerSettings'
+    | 'sidebarSettings'
     | 'onCellPress'
     | 'onCellLongPress'
     | 'onSchedulePress'
@@ -48,8 +58,15 @@ const Schedule: React.FC<ScheduleProps> = ({
   startHour = '00:00',
   endHour = '24:00',
   daysWeek = DaysWeek,
-  schedulingSettings = defaultSchedulingSettings,
   cellDimensions = defaultCellDimensions,
+  headerSettings = defaultHeaderSettings,
+  sidebarSettings = defaultSidebarSettings,
+  cellSettings = defaultCellSettings,
+  schedulingSettings = defaultSchedulingSettings,
+  onCellPress,
+  onCellLongPress,
+  onSchedulePress,
+  onScheduleLongPress,
   style,
 }) => {
   const value = useMemo(
@@ -63,11 +80,18 @@ const Schedule: React.FC<ScheduleProps> = ({
       days: getDays(currentView, daysWeek),
       hours: getHours(startHour, endHour),
       daysWeek,
+      headerSettings: { ...defaultHeaderSettings, ...headerSettings },
+      sidebarSettings: { ...defaultSidebarSettings, ...sidebarSettings },
       schedulingSettings: getSchedulingSettings(schedulingSettings),
       cellDimensions: getCellDimensions(currentView, {
         ...defaultCellDimensions,
         ...cellDimensions,
       }),
+      cellSettings,
+      onCellPress,
+      onCellLongPress,
+      onSchedulePress,
+      onScheduleLongPress,
     }),
     [
       schedules,
@@ -76,8 +100,15 @@ const Schedule: React.FC<ScheduleProps> = ({
       daysWeek,
       selectedDate,
       currentView,
-      schedulingSettings,
       cellDimensions,
+      headerSettings,
+      sidebarSettings,
+      cellSettings,
+      schedulingSettings,
+      onCellPress,
+      onCellLongPress,
+      onSchedulePress,
+      onScheduleLongPress,
     ]
   );
 

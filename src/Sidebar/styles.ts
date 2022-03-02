@@ -3,7 +3,6 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     width: 80,
-    marginTop: 80,
   },
   card: {
     flex: 1,

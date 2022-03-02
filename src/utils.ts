@@ -81,7 +81,7 @@ export function isUndefined(value: any): boolean {
 }
 
 export function getSchedulingSettings(
-  settings: ScheduleSchedulingSettings
+  settings: Partial<ScheduleSchedulingSettings>
 ): SchedulingSettings {
   const { fields, style, render } = settings;
   return {

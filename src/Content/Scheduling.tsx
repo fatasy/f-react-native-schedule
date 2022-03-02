@@ -39,7 +39,7 @@ function getSchedulingHeight(
 const Scheduling: React.FC<SchedulingProps> = ({
   date,
   scheduling,
-  style,
+  style: styleProp,
   ...props
 }) => {
   const {
@@ -48,7 +48,7 @@ const Scheduling: React.FC<SchedulingProps> = ({
     onSchedulePress,
     onScheduleLongPress,
   } = useContext<ScheduleContext>(ScheduleContext);
-  const { fields, render } = schedulingSettings;
+  const { fields, render, style } = schedulingSettings;
   const {
     subject: { name: subjectFieldName, style: subjectStyle },
     startTime: { name: startTimeFieldName },
@@ -62,12 +62,11 @@ const Scheduling: React.FC<SchedulingProps> = ({
   const { height: cellHeight } = cellDimensions;
 
   const touchableOpacityProps = {
-    ...(onSchedulePress && {
-      onPress: (event) => onSchedulePress && onSchedulePress(scheduling, event),
+    ...(typeof onSchedulePress === 'function' && {
+      onPress: (event) => onSchedulePress(scheduling, event),
     }),
-    ...(onSchedulePress && {
-      onLongPress: (event) =>
-        onScheduleLongPress && onScheduleLongPress(scheduling, event),
+    ...(typeof onScheduleLongPress === 'function' && {
+      onLongPress: (event) => onScheduleLongPress(scheduling, event),
     }),
   } as TouchableOpacityProps;
 
@@ -75,9 +74,8 @@ const Scheduling: React.FC<SchedulingProps> = ({
     <TouchableOpacity
       style={[
         styles.container,
-        style,
+        styleProp,
         {
-          width: cellDimensions.width,
           height: getSchedulingHeight(startTime, endTime, cellHeight),
         },
       ]}
@@ -86,7 +84,7 @@ const Scheduling: React.FC<SchedulingProps> = ({
     >
       {render && render(scheduling, date)}
       {!render && (
-        <View style={styles.content}>
+        <View style={[styles.content, style]}>
           <Text numberOfLines={2} style={[styles.subject, subjectStyle]}>
             {subject}
           </Text>

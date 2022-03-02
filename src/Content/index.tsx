@@ -20,8 +20,6 @@ const Content: React.FC = () => {
     currentView,
     cellDimensions,
     schedulingSettings,
-    onCellPress,
-    onCellLongPress,
   } = useContext<ScheduleContext>(ScheduleContext);
   const [schedules, setSchedules] = useState<Array<any>>([]);
   const { fields } = schedulingSettings;
@@ -45,7 +43,9 @@ const Content: React.FC = () => {
       ...cellDimensions,
       left:
         currentView === 'day' ? 0 : day > 0 ? cellDimensions.width * day : 0,
-      top: hour > 0 ? cellDimensions.height * (hour + 1) : 80,
+      top:
+        hour > 0 ? cellDimensions.height * (hour + 1) : cellDimensions.height,
+      margin: 0,
     } as ViewStyle;
   }
 
@@ -58,8 +58,6 @@ const Content: React.FC = () => {
           key={index}
           date={date}
           style={getItemStyle(date.day(), date.hour())}
-          onCellPress={onCellPress}
-          onCellLongPress={onCellLongPress}
         />
       );
     }

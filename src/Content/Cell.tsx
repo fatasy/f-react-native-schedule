@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import type { Dayjs } from 'dayjs';
 import {
   TouchableOpacity,
@@ -6,48 +6,44 @@ import {
   ViewProps,
   StyleSheet,
   GestureResponderEvent,
+  View,
 } from 'react-native';
 import { defaultCellSettings } from '../constants';
+import ScheduleContext from '../ScheduleContext';
 
-export type onCellPress = (date: Date, event: GestureResponderEvent) => void;
+export type onCellPress = (date: Dayjs, event: GestureResponderEvent) => void;
 export type onCellLongPress = (
-  date: Date,
+  date: Dayjs,
   event: GestureResponderEvent
 ) => void;
 
 type CellProps = {
   date: Dayjs;
-  onCellPress?: onCellPress;
-  onCellLongPress?: onCellLongPress;
 } & ViewProps &
   TouchableOpacityProps;
 
-const Cell: React.FC<CellProps> = ({
-  date,
-  style,
-  onCellPress,
-  onCellLongPress,
-  ...props
-}) => {
+const Cell: React.FC<CellProps> = ({ date, style: styleProp, ...props }) => {
+  const { cellSettings, onCellPress, onCellLongPress } =
+    useContext<ScheduleContext>(ScheduleContext);
+  const { render, style } = cellSettings;
+
   const touchableOpacityProps = {
-    ...(onCellPress && {
-      onPress: (event) => onCellPress && onCellPress(date.toDate(), event),
+    ...(typeof onCellPress === 'function' && {
+      onPress: (event) => onCellPress(date, event),
     }),
-    ...(onCellPress && {
-      onLongPress: (event) =>
-        onCellLongPress && onCellLongPress(date.toDate(), event),
+    ...(typeof onCellLongPress === 'function' && {
+      onLongPress: (event) => onCellLongPress(date, event),
     }),
   } as TouchableOpacityProps;
 
   return (
     <TouchableOpacity
-      {...touchableOpacityProps}
-      style={[styles.container, style]}
+      style={[styles.container, styleProp]}
       {...props}
-      onPress={() => {
-        console.log('dewde');
-      }}
-    />
+      {...touchableOpacityProps}
+    >
+      <View style={[styles.content, style]}>{render && render(date)}</View>
+    </TouchableOpacity>
   );
 };
 
@@ -62,6 +58,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0,
     borderLeftWidth: 0,
     ...defaultCellSettings.style,
+  },
+  content: {
+    flex: 1,
   },
 });
 
