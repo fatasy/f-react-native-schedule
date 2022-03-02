@@ -5,7 +5,7 @@ Flexible scheduling library with more built-in features and enhanced customizati
 ## Installation
 
 ```sh
-npm install f-react-native-schedule
+yarn add f-react-native-schedule
 ```
 
 ## Usage
