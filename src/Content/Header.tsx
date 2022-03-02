@@ -6,12 +6,13 @@ import { Text, View, StyleSheet } from 'react-native';
 import ScheduleContext from '../ScheduleContext';
 
 const Header: React.FC = () => {
-  const { days, headerSettings, cellDimensions } = useContext(ScheduleContext);
+  const { selectedDate, days, headerSettings, cellDimensions } =
+    useContext(ScheduleContext);
   const { cellRender, currentDayColor } = headerSettings;
 
   function renderDayWeek(dayNumber: number) {
-    const day = dayjs().day(dayNumber);
-    const isCurrentDay = dayjs().day() === dayNumber;
+    const day = dayjs(selectedDate).day(dayNumber);
+    const isCurrentDay = day.isSame(dayjs(selectedDate));
     const color = {
       ...(isCurrentDay && {
         color: currentDayColor,

@@ -14,6 +14,7 @@ dayjs.extend(isBetween);
 
 const Content: React.FC = () => {
   const {
+    selectedDate,
     rawSchedules,
     days,
     hours,
@@ -32,11 +33,11 @@ const Content: React.FC = () => {
     return hours
       .map((hour) => {
         return days.map((day) => {
-          return dayjs().day(day).hour(hour).minute(0).second(0);
+          return dayjs(selectedDate).day(day).hour(hour).minute(0).second(0);
         });
       })
       .flat();
-  }, [days, hours]);
+  }, [selectedDate, days, hours]);
 
   function getItemStyle(day: number, hour: number) {
     return {

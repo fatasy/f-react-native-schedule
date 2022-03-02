@@ -25,6 +25,7 @@ export default function App() {
       <View style={styles.container}>
         <Schedule
           schedules={schedules}
+          selectedDate={new Date('2022-03-07')}
           onCellPress={(date) => {
             console.log({ date });
           }}

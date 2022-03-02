@@ -22,27 +22,26 @@ import type {
 
 type ScheduleContext = {
   /**
-   * Para marcar a data ativa (atual) na Agenda.
-   * O padrão é a data atual do sistema.
+   * To mark the active (current) date in the schedule.
+   * The default is the current system date.
    *
    * @default 'new Date()'
    */
   selectedDate: SelectedDate;
   /**
-   * É usado para especificar a hora de início, a partir da qual a Agenda começa a ser exibida.
+   * It is used to specify the start time, from which the Schedule starts to be displayed.
    *
    * @default '00:00'
    */
   startHour: StartHour;
   /**
-   * É usado para especificar a hora final, na qual a Agenda termina. Ele também aceita uma string de tempo.
+   * It is used to specify the end time at which the schedule ends. It also accepts a time string.
    *
    * @default '24:00'
    */
   endHour: EndHour;
   /**
-   * Para definir a visualização ativa no agendador, a propriedade `currentView` pode ser usada e geralmente aceita qualquer um dos seguintes disponíveis
-   * opções de visualização. A opção de visualização especificada nesta propriedade será inicialmente carregada no agendamento.
+   * To set the active view on the schedule
    *
    * * day
    * * week
