@@ -46,8 +46,8 @@ export type ScheduleProps = {
     | 'sidebarSettings'
     | 'onCellPress'
     | 'onCellLongPress'
-    | 'onSchedulePress'
-    | 'onScheduleLongPress'
+    | 'onSchedulingPress'
+    | 'onSchedulingLongPress'
   >
 >;
 
@@ -65,8 +65,8 @@ const Schedule: React.FC<ScheduleProps> = ({
   schedulingSettings = defaultSchedulingSettings,
   onCellPress,
   onCellLongPress,
-  onSchedulePress,
-  onScheduleLongPress,
+  onSchedulingPress,
+  onSchedulingLongPress,
   style,
 }) => {
   const value = useMemo(
@@ -90,8 +90,8 @@ const Schedule: React.FC<ScheduleProps> = ({
       cellSettings,
       onCellPress,
       onCellLongPress,
-      onSchedulePress,
-      onScheduleLongPress,
+      onSchedulingPress,
+      onSchedulingLongPress,
     }),
     [
       schedules,
@@ -107,8 +107,8 @@ const Schedule: React.FC<ScheduleProps> = ({
       schedulingSettings,
       onCellPress,
       onCellLongPress,
-      onSchedulePress,
-      onScheduleLongPress,
+      onSchedulingPress,
+      onSchedulingLongPress,
     ]
   );
 

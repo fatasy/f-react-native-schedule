@@ -2,8 +2,8 @@ import { createContext } from 'react';
 
 import type { onCellLongPress, onCellPress } from './Content/Cell';
 import type {
-  onScheduleLongPress,
-  onSchedulePress,
+  onSchedulingLongPress,
+  onSchedulingPress,
 } from './Content/Scheduling';
 import type {
   CellDimensions,
@@ -61,8 +61,8 @@ type ScheduleContext = {
   schedulingSettings: SchedulingSettings;
   onCellPress?: onCellPress;
   onCellLongPress?: onCellLongPress;
-  onSchedulePress?: onSchedulePress;
-  onScheduleLongPress?: onScheduleLongPress;
+  onSchedulingPress?: onSchedulingPress;
+  onSchedulingLongPress?: onSchedulingLongPress;
 };
 
 const ScheduleContext = createContext({} as ScheduleContext);

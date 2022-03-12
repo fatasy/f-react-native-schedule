@@ -12,11 +12,11 @@ import {
 import type { Scheduling as SchedulingType } from '../types';
 import ScheduleContext from '../ScheduleContext';
 
-export type onSchedulePress = (
+export type onSchedulingPress = (
   scheduling: SchedulingType,
   event: GestureResponderEvent
 ) => void;
-export type onScheduleLongPress = (
+export type onSchedulingLongPress = (
   scheduling: SchedulingType,
   event: GestureResponderEvent
 ) => void;
@@ -45,8 +45,8 @@ const Scheduling: React.FC<SchedulingProps> = ({
   const {
     cellDimensions,
     schedulingSettings,
-    onSchedulePress,
-    onScheduleLongPress,
+    onSchedulingPress,
+    onSchedulingLongPress,
   } = useContext<ScheduleContext>(ScheduleContext);
   const { fields, render, style } = schedulingSettings;
   const {
@@ -62,11 +62,11 @@ const Scheduling: React.FC<SchedulingProps> = ({
   const { height: cellHeight } = cellDimensions;
 
   const touchableOpacityProps = {
-    ...(typeof onSchedulePress === 'function' && {
-      onPress: (event) => onSchedulePress(scheduling, event),
+    ...(typeof onSchedulingPress === 'function' && {
+      onPress: (event) => onSchedulingPress(scheduling, event),
     }),
-    ...(typeof onScheduleLongPress === 'function' && {
-      onLongPress: (event) => onScheduleLongPress(scheduling, event),
+    ...(typeof onSchedulingLongPress === 'function' && {
+      onLongPress: (event) => onSchedulingLongPress(scheduling, event),
     }),
   } as TouchableOpacityProps;
 
