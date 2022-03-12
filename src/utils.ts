@@ -11,6 +11,7 @@ import type {
   ScheduleSchedulingSettings,
   ScheduleView,
   SchedulingSettings,
+  SelectedDate,
   StartHour,
 } from './types';
 
@@ -46,10 +47,11 @@ export function getHours(startHourRaw: StartHour, endHourRaw: EndHour) {
 }
 
 export function getDays(
+  selectedDate: SelectedDate,
   currentView: ScheduleView,
   daysWeek: DaysWeek
 ): DaysWeek {
-  if (currentView === 'day') return [dayjs().day()];
+  if (currentView === 'day') return [dayjs(selectedDate).day()];
   return daysWeek;
 }
 

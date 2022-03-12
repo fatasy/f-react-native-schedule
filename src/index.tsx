@@ -77,7 +77,7 @@ const Schedule: React.FC<ScheduleProps> = ({
       rawSchedules: schedules,
       startHour,
       endHour,
-      days: getDays(currentView, daysWeek),
+      days: getDays(selectedDate, currentView, daysWeek),
       hours: getHours(startHour, endHour),
       daysWeek,
       headerSettings: { ...defaultHeaderSettings, ...headerSettings },
