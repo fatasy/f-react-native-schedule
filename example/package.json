@@ -21,6 +21,7 @@
     "react-native": "0.63.4",
     "react-native-date-picker": "^4.2.0",
     "react-native-datepicker": "^1.7.2",
+    "react-native-fab": "^1.0.18",
     "react-native-numeric-input": "^1.9.1",
     "react-native-radio-buttons-group": "^2.2.10",
     "react-native-safe-area-context": "3.2.0",

@@ -9,7 +9,7 @@ import Schedule from '../../src';
 import type { ScheduleView } from '../../src/types';
 import { useState } from 'react';
 import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group';
-import NumericInput from 'react-native-numeric-input';
+import FAB from 'react-native-fab';
 
 const dates = [
   dayjs().subtract(1, 'hour'),
@@ -43,8 +43,6 @@ export default function App() {
   const [date, setDate] = useState(new Date());
   const [radioButtons, setRadioButtons] = useState(typeOfViewOptions);
   const [currentView, setCurrentView] = useState<ScheduleView>('week');
-  const [startHour, setStartHour] = useState<number>(0);
-  const [endHour, setEndHour] = useState<number>(24);
 
   function onCurrentViewChange(nextRadioButtons: RadioButtonProps[]) {
     const nextCurrentView = nextRadioButtons.find(({ selected }) => selected);
@@ -71,39 +69,21 @@ export default function App() {
             onPress={onCurrentViewChange}
             layout="row"
           />
-          <View
-            style={{ flexDirection: 'row', justifyContent: 'space-around' }}
-          >
-            <View>
-              <Text>Start Hour</Text>
-              <NumericInput
-                value={startHour}
-                minValue={0}
-                maxValue={endHour}
-                type="up-down"
-                onChange={setStartHour}
-              />
-            </View>
-
-            <View>
-              <Text>End Hour</Text>
-              <NumericInput
-                value={endHour}
-                minValue={startHour}
-                maxValue={24}
-                type="up-down"
-                onChange={setEndHour}
-              />
-            </View>
-          </View>
         </View>
 
         <Schedule
           schedules={schedules}
           selectedDate={date}
           currentView={currentView}
-          startHour={startHour.toString()}
-          endHour={endHour.toString()}
+        />
+        <FAB
+          buttonColor="red"
+          iconTextColor="#FFFFFF"
+          onClickAction={() => {
+            console.log('FAB pressed');
+          }}
+          visible={true}
+          iconTextComponent={<Text>+</Text>}
         />
       </View>
     </SafeAreaView>
