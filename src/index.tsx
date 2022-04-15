@@ -33,6 +33,8 @@ export type ScheduleProps = {
   schedulingSettings?: Partial<ScheduleSchedulingSettings>;
   cellSettings?: Partial<CellSettings>;
   cellDimensions?: Partial<CellDimensions>;
+  showVerticalScrollbar?: boolean;
+  showHorizontalScrollbar?: boolean;
 } & Partial<
   Pick<
     ScheduleContext,
@@ -63,6 +65,8 @@ const Schedule: React.FC<ScheduleProps> = ({
   sidebarSettings = defaultSidebarSettings,
   cellSettings = defaultCellSettings,
   schedulingSettings = defaultSchedulingSettings,
+  showVerticalScrollbar = true,
+  showHorizontalScrollbar = true,
   onCellPress,
   onCellLongPress,
   onSchedulingPress,
@@ -83,6 +87,8 @@ const Schedule: React.FC<ScheduleProps> = ({
       headerSettings: { ...defaultHeaderSettings, ...headerSettings },
       sidebarSettings: { ...defaultSidebarSettings, ...sidebarSettings },
       schedulingSettings: getSchedulingSettings(schedulingSettings),
+      showVerticalScrollbar,
+      showHorizontalScrollbar,
       cellDimensions: getCellDimensions(currentView, {
         ...defaultCellDimensions,
         ...cellDimensions,
@@ -105,6 +111,8 @@ const Schedule: React.FC<ScheduleProps> = ({
       sidebarSettings,
       cellSettings,
       schedulingSettings,
+      showVerticalScrollbar,
+      showHorizontalScrollbar,
       onCellPress,
       onCellLongPress,
       onSchedulingPress,
@@ -116,8 +124,8 @@ const Schedule: React.FC<ScheduleProps> = ({
     <ScheduleContext.Provider value={value}>
       <ScrollView
         style={[styles.container, style]}
-        showsVerticalScrollIndicator
-        showsHorizontalScrollIndicator
+        showsVerticalScrollIndicator={showVerticalScrollbar}
+        showsHorizontalScrollIndicator={showHorizontalScrollbar}
       >
         <View style={styles.content}>
           <Sidebar />
