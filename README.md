@@ -46,6 +46,8 @@ None of the following properties are required. A simple <Schedule /> Will still 
 | **`headerSettings`** | Header configuration. | [Default Header Settings](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/constants.ts#L35) | [Type](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/types.ts#L46) |
 | **`sidebarSettings`** | Sidebar configuration. | [Default Sidebar Settings](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/constants.ts#L30) | [Type](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/types.ts#L56) |
 | **`CellSettings `** | Cell content configuration. | [Default Cell Content Settings](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/constants.ts#L39) | [Type](https://github.com/fatasy/f-react-native-schedule/blob/e3df449b645b412e8ce63bcd8d88c20a0601545a/src/types.ts#L23) |
+| **`showVerticalScrollbar`** | Specify if the vertical scrollbar should be displayed | `true` | boolean |
+| **`showHorizontalScrollbar`** | Specify if the horizontal scrollbar should be displayed | `true` | boolean |
 | **`onCellPress`** | Return function for pressing a cell | `-` | (date event) => void |
 | **`onCellLongPress`** | Return function for long pressing a cell. | `-` | (date event) => void |
 | **`onSchedulingPress`** | Return function for pressing a scheduling | `-` | (scheduling, event) => void |
