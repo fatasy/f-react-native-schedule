@@ -2,7 +2,7 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import { useContext } from 'react';
-import { Text, View, StyleSheet, FlatList } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import ScheduleContext from '../ScheduleContext';
 
 const Header: React.FC = () => {
@@ -43,13 +43,9 @@ const Header: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={days}
-        extraData={selectedDate}
-        horizontal
-        keyExtractor={(day) => day.toString()}
-        renderItem={({ item: day }) => renderDayWeek(day)}
-      />
+      <ScrollView horizontal>
+        {days.map((day) => renderDayWeek(day))}
+      </ScrollView>
     </View>
   );
 };
